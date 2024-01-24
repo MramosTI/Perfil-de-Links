@@ -1,0 +1,164 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --text-color: white;
+  --bg-url: url(imagens/Background.png);
+  --stroke-color: rgba(255, 255, 255, 0.5);
+  --surface-color: rgba(255, 255, 255, 0.05);
+  --surface-color-hover: rgba(0, 0, 0, 0.02);
+  --heighlight-color: rgba(255, 255, 255, 0.2);
+  --switch-bg-url: url(assets/moon-stars.svg);
+}
+
+.light {
+  --text-color: black;
+  --bg-url: url(./imagens/bg-mobile-light.jpg);
+  --stroke-color: rgba(0, 0, 0, 0.5);
+  --surface-color: rgba(0, 0, 0, 0.05);
+  --surface-color-hover: rgba(0, 0, 0, 0.02);
+  --heighlight-color: rgba(0, 0, 0, 0.1);
+  --switch-bg-url: url(./assets/sun.svg);
+}
+
+body {
+  background: var(--bg-url) no-repeat top center/cover; /*Está é uma shorthand ou atalho. */
+}
+
+body * {
+  font-family: "Inter", sans-serif;
+  color: var(--text-color);
+}
+
+#container {
+  width: 360px;
+  margin: 56px auto 0px;
+  /*ou margin: auto;*/
+  padding: 0 24px;
+}
+
+#profile {
+  text-align: center; /*Este comando já pode ser utilizado em elementos inline,, basta colocalo na tag pai. */
+  padding: 24px;
+}
+
+#profile img {
+  width: 150px; /*geralmente não precisamos deixar altura, porquê ela geralmente segue o conteudo da página. Em elementos inline não conseguimos apicar o margin auto. */
+}
+
+#profile p {
+  font-weight: 500;
+  line-height: 24px;
+  margin-top: 8px;
+}
+
+/*switch*/
+#switch {
+  position: relative;
+  width: 64px;
+  margin: 4px auto;
+}
+
+#switch button {
+  width: 32px;
+  height: 32px;
+  background: white var(--switch-bg-url) no-repeat center;
+  border: 0;
+  border-radius: 50%;
+  position: absolute; /*absoluto, ele sobrepõe camadas*/
+  top: 50%;
+  z-index: 1; /*Faz o position absolute subir uma camada*/
+  left: 0;
+  transform: translateY(
+    -50%
+  ); /*alinhando juntamente com o top no eixo y que é verticalmente*/
+}
+
+.light #switch button {
+  right: 0;
+  left: initial;
+}
+
+#switch span {
+  display: block; /*Span por padrão tem display inline e não aceita algumas propriedades por isso colocamos display block*/
+  width: 64px;
+  height: 24px;
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 9999px;
+}
+
+/*Links */
+
+ul {
+  list-style: none;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 16px;
+
+  padding: 24px 0;
+}
+
+ul li a {
+  display: flex;
+  justify-content: center;
+  padding: 16px 24px;
+  align-items: center;
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  text-decoration: none;
+  font-weight: 500;
+  border-radius: 16px;
+  transition: background 0.5;
+}
+
+/*Pseudo-selector*/
+ul li a:hover {
+  background: var(--surface-color-hover);
+  border: 1.5px solid var(--text-color);
+}
+
+#social-links {
+  display: flex;
+  gap: 16px;
+  flex-direction: row;
+  align-items: center;
+  padding: 24px 0;
+  font-size: 24px;
+  justify-content: center;
+}
+
+#social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+
+#social-links a:hover {
+  background: var(--heighlight-color);
+}
+
+footer {
+  margin-top: 100px;
+  padding: 24px 0;
+  text-align: center;
+  font-size: 8px;
+}
+
+footer a {
+  text-decoration: none;
+  color: var(--text-color);
+}
